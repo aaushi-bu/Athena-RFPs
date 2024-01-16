@@ -26,7 +26,7 @@ if st.button("Generate Proposal"):
         # Generate RFP using OpenAI's GPT-3.5 Turbo
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
-            messages=[{"role": "system", "content": "You are a helpful assistant that generates RFPs."}, {"role": "user", "content": prompt}],
+            messages=[{"role": "system", "content": "You are a helpful assistant that generates Proposals from requirements shared by the client."}, {"role": "user", "content": prompt}],
         )
 
         # Extract and display the generated RFP
