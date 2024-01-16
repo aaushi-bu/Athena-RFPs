@@ -3,7 +3,7 @@ import streamlit as st
 import openai
 
 # Set your OpenAI API key here
-api_key = os.environ.get('OPENAI_API_KEY')
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 # Streamlit app title and description
 st.title("Athena RFP Generator")
