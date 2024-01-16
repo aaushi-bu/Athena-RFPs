@@ -2,14 +2,13 @@ import streamlit as st
 import os
 from openai import OpenAI
 
-# Set your OpenAI API key here
-api_key = ""
 
-client = OpenAI(api_key=api_key)
+
+client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
 # Streamlit app title and description
-st.title("RFP Generator")
-st.write("Generate Request for Proposal (RFP) using OpenAI's GPT-3.")
+st.title("Athena RFP Generator")
+st.write("Generate Request for Proposal (RFP) using AI")
 
 # Input fields for user-provided information
 client_name = st.text_input("Client Name", "")
