@@ -1,8 +1,6 @@
-import streamlit as st
 import os
+import streamlit as st
 import openai
-
-
 
 client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
