@@ -21,7 +21,7 @@ if st.button("Generate Proposal"):
     # Check if all required inputs are provided
     if client_name and purposes_defined and duties_responsibilities and deliverables and athena_approach:
         # Create the prompt using user-provided inputs
-        prompt = f"Generate a Prposal for {client_name} to address the following purposes defined in the RFP:\n\n{purposes_defined}\n\nThe client has specified the following duties or responsibilities:\n\n{duties_responsibilities}\n\nThe deliverables expected include:\n\n{deliverables}\n\nThe proposal should also incorporate the Athena approach as follows:\n\n{athena_approach}"
+        prompt = f"Generate a Prposal for {client_name} to address the following purposes defined in the request:\n\n{purposes_defined}\n\nThe client has specified the following duties or responsibilities:\n\n{duties_responsibilities}\n\nThe deliverables expected include:\n\n{deliverables}\n\nThe proposal should also incorporate the Athena approach as follows:\n\n{athena_approach}"
 
         # Generate RFP using OpenAI's GPT-3.5 Turbo
         response = openai.ChatCompletion.create(
