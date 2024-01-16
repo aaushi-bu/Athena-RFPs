@@ -2,7 +2,8 @@ import os
 import streamlit as st
 import openai
 
-client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
+# Set your OpenAI API key here
+api_key = os.environ.get('OPENAI_API_KEY')
 
 # Streamlit app title and description
 st.title("Athena RFP Generator")
@@ -22,16 +23,16 @@ if st.button("Generate RFP"):
         # Create the prompt using user-provided inputs
         prompt = f"Generate a Request for Proposal (RFP) for {client_name} to address the following purposes defined in the RFP:\n\n{purposes_defined}\n\nThe client has specified the following duties or responsibilities:\n\n{duties_responsibilities}\n\nThe deliverables expected include:\n\n{deliverables}\n\nThe proposal should also incorporate the Athena approach as follows:\n\n{athena_approach}"
 
-        # Generate RFP using OpenAI's GPT-3
-        response = client.completions.create(
-            model="gpt-3.5-turbo-instruct",
-            prompt=prompt,
-            max_tokens=2000,
+        # Generate RFP using OpenAI's GPT-3.5 Turbo
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "system", "content": "You are a helpful assistant that generates RFPs."}, {"role": "user", "content": prompt}],
         )
 
-        # Display the generated RFP
+        # Extract and display the generated RFP
+        rfp_message = response["choices"][0]["message"]["content"]
         st.subheader("Generated RFP:")
-        st.write(response.choices[0].text)
+        st.write(rfp_message)
     else:
         st.warning("Please fill in all required fields.")
 
